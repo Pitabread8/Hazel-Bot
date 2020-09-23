@@ -23,7 +23,6 @@ module.exports = {
             .setTitle('Covid-19 Information')
             .setURL('https://covidtracking.com')
             .setAuthor('Stay safe!')
-            .setDescription('If the links don\'t work, you may have not inputted the values correctly.')
             .setThumbnail('https://mediad.publicbroadcasting.net/p/nhpr/files/styles/x_large/public/202003/coronavirus_2_cdc.jpg')
             .addFields(
                 { name: 'Cases', value: `${virusValue.positive}` },
