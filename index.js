@@ -16,15 +16,15 @@ for (const file of commandFiles) {
 client.once('ready', () => {
 	console.log('Ready to have fun!');
     client.user.setActivity('?help', { type: 'LISTENING' });
-});
-
-client.on('message', message => {
+    
     let serverlist = ''
     client.guilds.cache.forEach((guild) => {
         serverlist = serverlist.concat(" - " + guild.name + ": ID: " + guild.id + "\n")
     })
     console.log(serverlist)
-    
+});
+
+client.on('message', message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).split(/ +/);
