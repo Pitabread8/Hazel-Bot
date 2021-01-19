@@ -17,11 +17,11 @@ client.once('ready', () => {
 	console.log('Ready to have fun!');
     client.user.setActivity('?help', { type: 'LISTENING' });
     
-    let serverlist = ''
+    let serverlist = '';
     client.guilds.cache.forEach((guild) => {
-        serverlist = serverlist.concat(" - " + guild.name + ": ID: " + guild.id + "\n")
+        serverlist = serverlist.concat(" - " + guild.name + ": ID: " + guild.id + "\n");
     })
-    console.log(serverlist)
+    console.log(serverlist);
 });
 
 client.on('message', message => {
