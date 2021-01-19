@@ -33,13 +33,14 @@ let letters = [
 module.exports = {
 	name: 'poll',
     description: 'Creates a poll.',
-    usage: `\nMultiple Choice (1-26) Example: \`?poll |title|option 1|option 2\` \nYes/No/Other Example: \`?poll |the title\``,
-	async execute(message) {
-		const ops = message.content.slice(1).split("|");
+    usage: `\nMultiple Choice (1-26 options) Example: \`?poll the title|option 1|option 2\` \nYes/No/Other Example: \`?poll the title\``,
+	async execute(message, args) {
+        const allargs = args.join(" ");
+        const ops = allargs.slice(0).split("|");
   
         if (ops.length === 1) {
             message.delete({ timeout: 500 })
-            var title = message.content.substr('?poll |'.length);
+            var title = allargs;
             message.channel.send(`📊 ${title}`).then(newmessage => {
                 newmessage.react('👍')
                 newmessage.react('👎')
