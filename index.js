@@ -15,25 +15,31 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
 	console.log('Ready to have fun!');
-  client.user.setActivity('?help', { type: 'LISTENING' });
+    client.user.setActivity('?help', { type: 'LISTENING' });
 });
 
 client.on('message', message => {
+    let serverlist = ''
+    client.guilds.cache.forEach((guild) => {
+        serverlist = serverlist.concat(" - " + guild.name + ": ID: " + guild.id + "\n")
+    })
+    console.log(serverlist)
+    
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).split(/ +/);
-  const commandName = args.shift().toLowerCase();
+    const commandName = args.shift().toLowerCase();
   
-  const command = client.commands.get(commandName)
+    const command = client.commands.get(commandName)
     || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-  if (!command) return;
+    if (!command) return;
 
-  try {
-    command.execute(message, args);
-  } catch (error) {
-    console.error(error);
-    message.reply('there was an error trying to execute that command!');
-  }
+    try {
+        command.execute(message, args);
+    } catch (error) {
+        console.error(error);
+        message.reply('there was an error trying to execute that command!');
+    }
 });
 
 client.login(token);

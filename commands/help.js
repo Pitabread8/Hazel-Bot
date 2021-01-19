@@ -23,10 +23,6 @@ module.exports = {
         actions = commands.map(command => command.description)
 
         if (!args.length) {
-            // data.push('Here\'s a list of all my commands:');
-            // data.push(commands.map(command => command.name).join(', '));
-            // data.push(`\nYou can send \`${prefix}help <command name>\` to get info on a specific command!`);
-            // return message.channel.send(data, { split: true })
             var color = Math.floor( Math.random() * (colors.length + 1) );
             const helpEmbed = new Discord.MessageEmbed()
                 .setColor(colors[color])
@@ -64,14 +60,5 @@ module.exports = {
                 assistEmbed.addField(`**Usage**`, `${command.usage}`)
             }
         message.channel.send(assistEmbed);
-
-        // data.push(`**Name:** ${command.name}`);
-
-        // if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
-        // if (command.description) data.push(`**Description:** ${command.description}`);
-        // if (command.usage) data.push(`**Usage:** ${command.usage}`);
-        // // if (command.usage) data.push(`**Usage:** ${prefix}${command.name}`);
-
-        // message.channel.send(data, { split: true });
 	},
 };
